@@ -36,15 +36,20 @@ namespace WebService.Controllers
 
 
 
-
-
-
         private ProductViewModel GetProductViewModel(Product product)
         {
             return new ProductViewModel
             {
+                Url = GetUrl(product),
                 Name = product.Name,
+                Category = product.Category
             };
+        }
+
+
+        private string GetUrl(Product product)
+        {
+            return _linkGenerator.GetUriByName(HttpContext, nameof(GetProducts), new { product.Id });
         }
     }
 
