@@ -11,7 +11,7 @@ namespace DataServiceLib
     {
         private List<Category> _categories = new List<Category>
         {
-            new Category{ Id = 1, Name = "Beverages", Description = "Soft drinks, coffees, teas, beers, and ales"},
+            new Category{ Id = 1, Name = "Beverages", Description = "Soft drinks, coffees, teas, beeeeeeeers, and ales"},
             new Category{ Id = 2, Name = "Condiments", Description = "Sweet and savory sauces, relishes, spreads, and seasonings"},
             new Category{ Id = 3, Name = "Confections", Description = "Desserts, candies, and sweet breads"},
             new Category{ Id = 4, Name = "Dairy Products", Description = "Cheeses"},
