@@ -15,7 +15,7 @@ namespace EfEx.Domain
         public int Employee_id { get; set; }
         public DateTime Date { get; set; } 
         public DateTime Required { get; set; } 
-        public DateTime Shipped_date { get; set; } 
+        public DateTime? Shipped_date { get; set; } 
         public int Freight { get; set; }
         public string ShipName { get; set; }
         public string Ship_address{ get; set; }

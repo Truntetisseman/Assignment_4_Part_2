@@ -66,8 +66,7 @@ namespace DataServiceLib
             List<OrderDetails> returns = ctx.OrderDetails.Where(od => od.ProductId == id).ToListAsync().Result;
 
             returns.ForEach(orderdetail => {
-                Console.WriteLine(orderdetail.OrderId);
-                //orderdetail.Order = ctx.Orders.Find(orderdetail.OrderId);
+                orderdetail.Order = ctx.Orders.Find(orderdetail.OrderId);
             });
             return returns;
         }
@@ -161,7 +160,8 @@ namespace DataServiceLib
         public List<Product> GetProductByName(string sub)
         {
             List<Product> returns = new();
-            ctx.Products.Include(x => x.Category).Where(x => x.Name.ToLower().Contains(sub.ToLower())).ForEachAsync(x => {
+            List<Product> s = ctx.Products.Include(x => x.Category).Where(x => x.Name.ToLower().Contains(sub.ToLower())).ToListAsync().Result;
+            s.ForEach(x => {
                 returns.Add(new Product { Name = x.Name, Category = x.Category });
                 Console.WriteLine($"{x.Name} + {x.Category}");
             });
@@ -171,7 +171,9 @@ namespace DataServiceLib
         public List<Product> GetProductByCategory(int category_id)
         {
             List<Product> returns = new();
-            ctx.Products.Include(x => x.Category).Where(x => x.Category.Id == category_id).ForEachAsync(x =>
+            List<Product> s = ctx.Products.Include(x => x.Category).Where(x => x.Category.Id == category_id).ToListAsync().Result;
+
+            s.ForEach(x =>
             {
                 returns.Add(new Product { Name = x.Name, UnitPrice = x.UnitPrice, CategoryName = x.Category.Name });
             });
