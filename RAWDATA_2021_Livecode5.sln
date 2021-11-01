@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31825.309
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataServiceLib", "DataServiceLib\DataServiceLib.csproj", "{93D7DE54-68BB-4C68-9CC4-A4AC0FA3FE88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebService", "WebService\WebService.csproj", "{D836AC2C-82D8-4567-B3D1-7BC974854E37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebService", "WebService\WebService.csproj", "{D836AC2C-82D8-4567-B3D1-7BC974854E37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServiceTest", "WebServiceTest\WebServiceTest.csproj", "{9E6E6AEF-8B7C-47F7-918F-8767B4904B96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D836AC2C-82D8-4567-B3D1-7BC974854E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D836AC2C-82D8-4567-B3D1-7BC974854E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D836AC2C-82D8-4567-B3D1-7BC974854E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E6E6AEF-8B7C-47F7-918F-8767B4904B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E6E6AEF-8B7C-47F7-918F-8767B4904B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E6E6AEF-8B7C-47F7-918F-8767B4904B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E6E6AEF-8B7C-47F7-918F-8767B4904B96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

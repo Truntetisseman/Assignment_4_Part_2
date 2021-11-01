@@ -1,4 +1,4 @@
-Ôªøusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -161,7 +161,7 @@ namespace Assignment4.Tests
             Assert.Equal(12, products.Count);
             Assert.Equal("Chai", products.First()["name"]);
             Assert.Equal("Beverages", products.First()["categoryName"]);
-            Assert.Equal("Lakkalik√∂√∂ri", products.Last()["name"]);
+            Assert.Equal("Lakkalikˆˆri", products.Last()["name"]);
         }
 
         [Fact]
@@ -180,7 +180,7 @@ namespace Assignment4.Tests
 
             Assert.Equal(HttpStatusCode.OK, statusCode);
             Assert.Equal(4, products.Count);
-            Assert.Equal("NuNuCa Nu√ü-Nougat-Creme", products.First()["productName"]);
+            Assert.Equal("NuNuCa Nuﬂ-Nougat-Creme", products.First()["productName"]);
             Assert.Equal("Flotemysost", products.Last()["productName"]);
         }
 
