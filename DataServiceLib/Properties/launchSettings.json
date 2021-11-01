@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DataServiceLib": {
+      "commandName": "Project"
+    },
+    "newProfile1": {
+      "commandName": "Project"
+    }
+  }
+}

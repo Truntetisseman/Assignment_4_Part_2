@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataServiceLib;
+using EfEx.Domain;
+
 namespace WebService.ViewModels
 {
     public class ProductViewModel

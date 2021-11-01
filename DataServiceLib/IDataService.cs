@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EfEx.Domain;
+using System.Collections.Generic;
 
 namespace DataServiceLib
 {
@@ -8,8 +9,8 @@ namespace DataServiceLib
         Category GetCategory(int id);
         IList<Product> GetProducts();
         Product GetProduct(int id);
-        void CreateCategory(Category category);
-        bool UpdateCategory(Category category);
+        bool CreateCategory(Category tocreate);
+        bool UpdateCategory(Category c);
         bool DeleteCategory(int id);
     }
 }
