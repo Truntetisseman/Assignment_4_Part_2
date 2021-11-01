@@ -34,6 +34,23 @@ namespace WebService.Controllers
             return Ok(products.Select(x => GetProductViewModel((x))));
         }
 
+        [HttpGet("{id}", Name = nameof(GetProduct))]
+        [Route("api/products/categories")]
+        public IActionResult GetProduct(int id)
+        {
+            var product = _dataService.GetProduct(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            ProductViewModel model = GetProductViewModel(product);
+
+            return Ok(model);
+        }
+
+
 
 
 
@@ -41,17 +58,16 @@ namespace WebService.Controllers
         {
             return new ProductViewModel
             {
-                Url = GetUrl(product),
                 Name = product.Name,
                 Category = product.Category
             };
         }
 
 
-        private string GetUrl(Product product)
-        {
-            return _linkGenerator.GetUriByName(HttpContext, nameof(GetProducts), new { product.Id });
-        }
+     //   private string GetUrl(Product product)
+       // {
+       //     return _linkGenerator.GetUriByName(HttpContext, nameof(GetProducts), new { product.Id });
+      //  }
     }
 
 }
