@@ -153,7 +153,7 @@ namespace DataServiceLib
         public Product GetProduct(int id)
         {
             Product found = ctx.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
-            return new Product() { Name = found.Name, UnitPrice = found.UnitPrice, Category = found.Category };
+            return found;
         }
 
 
@@ -168,14 +168,14 @@ namespace DataServiceLib
             return returns;
         }
 
-        public List<Product> GetProductByCategory(int category_id)
+        public List<Product> GetProductsByCatId(int category_id)
         {
             List<Product> returns = new();
             List<Product> s = ctx.Products.Include(x => x.Category).Where(x => x.Category.Id == category_id).ToListAsync().Result;
 
             s.ForEach(x =>
             {
-                returns.Add(new Product { Name = x.Name, UnitPrice = x.UnitPrice, CategoryName = x.Category.Name });
+                returns.Add(x);
             });
             return returns;
         }

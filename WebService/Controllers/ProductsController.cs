@@ -12,7 +12,7 @@ using WebService.ViewModels;
 namespace WebService.Controllers
 {
     [ApiController]
-    [Route("api/products")]
+    [Route("api/[controller]")]
     public class ProductsController : Controller
     {
 
@@ -34,8 +34,8 @@ namespace WebService.Controllers
             return Ok(products.Select(x => GetProductViewModel((x))));
         }
 
-        [HttpGet("{id}", Name = nameof(GetProduct))]
-        [Route("api/products/categories")]
+        [Route("{id}")]
+        [HttpGet]
         public IActionResult GetProduct(int id)
         {
             var product = _dataService.GetProduct(id);
@@ -45,7 +45,37 @@ namespace WebService.Controllers
                 return NotFound();
             }
 
-            ProductViewModel model = GetProductViewModel(product);
+            var model = GetProductViewModel2(product);
+
+            return Ok(model);
+        }
+
+
+        [HttpGet("category/{id}")]
+        public IActionResult GetProductByCatId(int id)
+        {
+            var product = _dataService.GetProductsByCatId(id);
+
+            if (product == null || product.Count == 0)
+            {
+                return NotFound(new List<Product>());
+            }
+
+            var model = product.Select(x => GetProductViewModel2(x));
+
+            return Ok(model);
+        }        
+        [HttpGet("name/{needle}")]
+        public IActionResult GetProductBySubstring(string needle)
+        {
+            var product = _dataService.GetProductByName(needle);
+
+            if (product == null || product.Count == 0)
+            {
+                return NotFound(new List<Product>());
+            }
+
+            var model = product.Select(x => GetProductViewModel(x));
 
             return Ok(model);
         }
@@ -58,16 +88,37 @@ namespace WebService.Controllers
         {
             return new ProductViewModel
             {
+                Url = GetUrl(product),
+                Id = product.Id,
+                ProductName = product.Name,
+                CategoryName = product.Category.Name,
+                Category = product.Category,
+                UnitPrice = product.UnitPrice,
+                SupplierId = product.SupplierId,
+                QuantityPerUnit = product.QuantityPerUnit,
+                UnitsInStock = product.UnitsInStock
+            };
+        }private ProductViewModel GetProductViewModel2 (Product product)
+        {
+            return new ProductViewModel
+            {
+                Url = GetUrl(product),
+                Id = product.Id,
                 Name = product.Name,
-                Category = product.Category
+                CategoryName = product.Category.Name,
+                Category = product.Category,
+                UnitPrice = product.UnitPrice,
+                SupplierId = product.SupplierId,
+                QuantityPerUnit = product.QuantityPerUnit,
+                UnitsInStock = product.UnitsInStock
             };
         }
 
 
-     //   private string GetUrl(Product product)
-       // {
-       //     return _linkGenerator.GetUriByName(HttpContext, nameof(GetProducts), new { product.Id });
-      //  }
+        private string GetUrl(Product product)
+        {
+            return _linkGenerator.GetUriByName(HttpContext, nameof(GetProduct), new { product.Id });
+        }
     }
 
 }

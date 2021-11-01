@@ -50,12 +50,14 @@ namespace WebService.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateCategory(CreateCategoryViewModel model)
+        public IActionResult CreateCategory(CategoryViewModel model)
         {
             var category = new Category
             {
                 Name = model.Name,
-                Description = model.Description
+                Description = model.Description,
+                Id = 123
+                
             };
 
             _dataService.CreateCategory(category);
@@ -64,7 +66,7 @@ namespace WebService.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateCategory(int id, CreateCategoryViewModel model)
+        public IActionResult UpdateCategory(int id, CategoryViewModel model)
         {
             var category = new Category
             {
@@ -78,7 +80,7 @@ namespace WebService.Controllers
                 return NotFound();
             }
 
-            return NoContent();
+            return Ok(GetCategoryViewModel(category));
         }
 
         [HttpDelete("{id}")]
@@ -102,8 +104,9 @@ namespace WebService.Controllers
             {
 
                 Url = GetUrl(category),
+                Id = category.Id,
                 Name = category.Name,
-                Desc = category.Description
+                Description = category.Description
             };
         }
 

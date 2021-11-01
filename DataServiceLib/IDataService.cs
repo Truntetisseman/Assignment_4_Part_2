@@ -12,5 +12,7 @@ namespace DataServiceLib
         bool CreateCategory(Category tocreate);
         bool UpdateCategory(Category c);
         bool DeleteCategory(int id);
+        List<Product> GetProductsByCatId(int id);
+        List<Product> GetProductByName(string needle);
     }
 }
